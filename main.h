@@ -12,11 +12,11 @@
 /**
  * struct func_s - Struct func_s
  * @op: The operator
- * @func: The function associated
+ * @f: The function associated
  */
 typedef struct func_s {
 	char *op;
-	int (*func)();
+	int (*f)();
 } func_t;
 
 /* _putchar function */

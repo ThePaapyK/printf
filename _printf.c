@@ -117,7 +117,7 @@ int _printf(const char *format, ...)
 	va_start(ap, format);
 	i = 0;
 
-	func_t func[] = {
+	func_t f[] = {
 		{"c", printchar},
 		{"s", printstring},
 		{"%", printpercent},
@@ -131,11 +131,11 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
-			while (func[i].op != NULL)
+			while (f[i].op != NULL)
 			{
-				if (format[i] == *func[i].op)
+				if (format[i] == *f[i].op)
 				{
-					func[i].func(ap);
+					f[i].f(ap);
 					break;
 				}
 				i++;
