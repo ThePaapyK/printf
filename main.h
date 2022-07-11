@@ -9,10 +9,18 @@
 #include <limits.h>
 #include <unistd.h>
 
-typedef struct func_specifier {
-	char *name;
-	int (*func)(va_list, int);
+/**
+ * struct func_s - Struct func_s
+ * @op: The operator
+ * @func: The function associated
+ */
+typedef struct func_s {
+	char *op;
+	int (*func)();
 } func_t;
+
+/* _putchar function */
+int _putchar(char c);
 
 /* Function that produces output according to a format */
 int _printf(const char *format, ...);
