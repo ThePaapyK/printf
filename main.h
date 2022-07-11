@@ -25,4 +25,12 @@ int _putchar(char c);
 /* Function that produces output according to a format */
 int _printf(const char *format, ...);
 
+/* print functions */
+int printstr(char *str);
+int printint(int n);
+int printchar(va_list ap);
+int printstring(va_list ap);
+int printpercent(va_list ap);
+int printinteger(va_list ap);
+
 #endif
