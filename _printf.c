@@ -6,6 +6,7 @@
  *
  * Return: The number of characters printed
  */
+
 int _printf(const char *format, ...)
 {
 	unsigned int i;
@@ -41,6 +42,7 @@ int _printf(const char *format, ...)
 			}
 		}
 		else
+
 		{
 			_putchar(format[i]);
 		}
@@ -48,5 +50,7 @@ int _printf(const char *format, ...)
 	}
 	va_end(ap);
 
+
 	return (i);
+
 }

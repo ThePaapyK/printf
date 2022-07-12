@@ -33,4 +33,4 @@ int printstring(va_list ap);
 int printpercent(va_list ap);
 int printinteger(va_list ap);
 
-#endif
+#endif /* MAIN_H */
