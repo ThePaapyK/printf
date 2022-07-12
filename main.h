@@ -16,7 +16,7 @@
  */
 typedef struct func_s {
 	char *op;
-	int (*f)();
+	int (*f)(va_list);
 } func_t;
 
 /* _putchar function */
@@ -26,11 +26,4 @@ int _putchar(char c);
 int _printf(const char *format, ...);
 
 /* print functions */
-int printstr(char *str);
-int printint(int n);
-int printchar(va_list ap);
-int printstring(va_list ap);
-int printpercent(va_list ap);
-int printinteger(va_list ap);
-
 #endif /* MAIN_H */

@@ -1,110 +1,69 @@
 #include "main.h"
 
-/**
- * printstr - Prints a string
- * @str: The string to print
- *
- * Return: The number of characters printed
- */
-int printstr(char *str)
+int print_char(va_list ap)
 {
-	int i;
+	char c = va_arg(ap, int);
 
-	i = 0;
-	while (str[i] != '\0')
-	{
-		_putchar(str[i]);
-		i++;
-	}
-
-	return (0);
+	_putchar(c);
+	return (1);
 }
 
-/**
- * printint - Prints an integer
- * @n: The integer to print
- *
- * Return: The number of characters printed
- */
-int printint(int n)
+int print_string(va_list ap)
 {
+	char *s = va_arg(ap, char *);
+
+	if (s == NULL)
+		s = "(null)";
+	while (*s != '\0')
+	{
+		_putchar(*s);
+		s++;
+	}
+	return (strlen(s));
+}
+
+int print_int_helper(int n, int base, int *count)
+{
+	int i, temp;
+
 	if (n < 0)
 	{
 		_putchar('-');
 		n = -n;
+		(*count)++;
 	}
-
-	if (n > 9)
+	if (n == 0)
 	{
-		printint(n / 10);
+		_putchar('0');
+		(*count)++;
+		return (0);
 	}
-	_putchar(n % 10 + '0');
-
-	return (0);
-}
-
-/**
- * printchar - Prints a character
- * @ap: The argument pointer
- *
- * Return: The number of characters printed
- */
-int printchar(va_list ap)
-{
-	char c;
-
-	c = va_arg(ap, int);
-	_putchar(c);
-
-	return (0);
-}
-
-/**
- * printstring - Prints a string
- * @ap: The argument pointer
- *
- * Return: The number of characters printed
- */
-int printstring(va_list ap)
-{
-	char *s;
-
-	s = va_arg(ap, char *);
-	if (s == NULL)
+	for (i = 1; n / base > 0; i++)
+		n /= base;
+	for (i = i - 1; i >= 0; i--)
 	{
-		s = "(null)";
+		temp = n % base;
+		if (temp < 10)
+			_putchar(temp + '0');
+		else
+			_putchar(temp - 10 + 'a');
+		(*count)++;
 	}
-	printstr(s);
-
 	return (0);
 }
 
-/**
- * printpercent - Prints a percent sign
- * @ap: The argument pointer
- *
- * Return: The number of characters printed
- */
-int printpercent(va_list ap)
+int print_int(va_list ap)
+{
+	int n = va_arg(ap, int);
+	int count = 0;
+
+	print_int_helper(n, 10, &count);
+	return (count);
+}
+
+int print_percent(va_list ap)
 {
 	(void)ap;
 	_putchar('%');
-
-	return (0);
-}
-
-/**
- * printinteger - Prints an integer
- * @ap: The argument pointer
- *
- * Return: The number of characters printed
- */
-int printinteger(va_list ap)
-{
-	int n;
-
-	n = va_arg(ap, int);
-	printint(n);
-
-	return (0);
+	return (1);
 }
