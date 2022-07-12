@@ -23,7 +23,7 @@ int convert_alpha_num(int n, int upper)
  *
  * Return: the string
  */
-int *convert_base(unsigned long n, unsigned int base, int upper)
+char *convert_base(unsigned long n, unsigned int base, int upper)
 {
 	int i = 0;
 	char *str;

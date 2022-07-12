@@ -39,7 +39,7 @@ int print_int(va_list ap);
 
 /* conversion functions */
 int convert_alpha_num(int n, int upper);
-int *convert_base(unsigned long n, unsigned int base, int upper);
+char *convert_base(unsigned long n, unsigned int base, int upper);
 
 /* print_number functions */
 int print_binary(va_list ap);
