@@ -4,9 +4,8 @@
  * printstr - Prints a string
  * @str: The string to print
  *
- * Return: The number of characters printed
  */
-int printstr(char *str)
+void printstr(char *str)
 {
 	int i;
 
@@ -17,16 +16,15 @@ int printstr(char *str)
 		i++;
 	}
 
-	return (0);
+
 }
 
 /**
  * printint - Prints an integer
  * @n: The integer to print
  *
- * Return: The number of characters printed
  */
-int printint(int n)
+void printint(int n)
 {
 	if (n < 0)
 	{
@@ -34,13 +32,13 @@ int printint(int n)
 		n = -n;
 	}
 
-	if (n > 9)
+	if (n / 10)
 	{
 		printint(n / 10);
 	}
 	_putchar(n % 10 + '0');
 
-	return (0);
+
 }
 
 /**
@@ -49,23 +47,22 @@ int printint(int n)
  *
  * Return: The number of characters printed
  */
-int printchar(va_list ap)
+void printchar(va_list ap)
 {
 	char c;
 
 	c = va_arg(ap, int);
 	_putchar(c);
 
-	return (0);
+
 }
 
 /**
  * printstring - Prints a string
  * @ap: The argument pointer
  *
- * Return: The number of characters printed
  */
-int printstring(va_list ap)
+void printstring(va_list ap)
 {
 	char *s;
 
@@ -76,35 +73,33 @@ int printstring(va_list ap)
 	}
 	printstr(s);
 
-	return (0);
+
 }
 
 /**
  * printpercent - Prints a percent sign
  * @ap: The argument pointer
  *
- * Return: The number of characters printed
  */
-int printpercent(va_list ap)
+void printpercent(va_list ap)
 {
 	(void)ap;
 	_putchar('%');
 
-	return (0);
+
 }
 
 /**
  * printinteger - Prints an integer
  * @ap: The argument pointer
  *
- * Return: The number of characters printed
  */
-int printinteger(va_list ap)
+void printinteger(va_list ap)
 {
 	int n;
 
 	n = va_arg(ap, int);
 	printint(n);
 
-	return (0);
+
 }

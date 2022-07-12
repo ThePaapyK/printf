@@ -9,16 +9,16 @@
 
 int _printf(const char *format, ...)
 {
-	unsigned int i;
+	unsigned int i, j;
 	va_list ap;
 
 	func_t funcs[] = {
-		{"c", printchar},
-		{"s", printstring},
-		{"%", printpercent},
-		{"i", printinteger},
-		{"d", printinteger},
-		{NULL, NULL}
+		{'c', printchar},
+		{'s', printstring},
+		{'%', printpercent},
+		{'i', printinteger},
+		{'d', printinteger},
+		{0, NULL}
 	};
 
 	va_start(ap, format);
@@ -26,19 +26,25 @@ int _printf(const char *format, ...)
 
 	while (format != NULL && format[i] != '\0')
 	{
+		j = 0;
 		if (format[i] == '%')
 		{
 			i++;
 			if (format[i] == '\0')
 				break;
-			while (funcs[i].op != NULL)
+			while (funcs[j].op != 0)
 			{
-				if (format[i] == *(funcs[i].op))
+				if (format[i] == (funcs[j].op))
 				{
-					funcs[i].f(ap);
+					funcs[j].f(ap);
 					break;
 				}
-				i++;
+				j++;
+			}
+			if (j > 4)
+			{
+				_putchar(format[i - 1]);
+				_putchar(format[i]);
 			}
 		}
 		else
@@ -49,7 +55,6 @@ int _printf(const char *format, ...)
 		i++;
 	}
 	va_end(ap);
-
 
 	return (i);
 
