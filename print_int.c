@@ -3,9 +3,6 @@
 /**
  * print_int_helper - helper function for print_int
  * @n: the number to print
- * @base: the base of the number
- * @sign: the sign of the number
- * @count: the number of characters printed
  *
  * Return: the number of characters printed
  */
