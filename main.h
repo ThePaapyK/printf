@@ -32,7 +32,7 @@ int print_string(va_list ap);
 int print_percent(va_list ap);
 
 /* print_int functions */
-int print_int_helper(int n, int base, int *count);
+int print_int_helper(int n);
 int print_int(va_list ap);
 
 #endif /* MAIN_H */

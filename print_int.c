@@ -9,35 +9,33 @@
  *
  * Return: the number of characters printed
  */
-int print_int_helper(int n, int base, int *count)
+int print_int_helper(int n)
 {
-	int i, ret = 0;
+	unsigned int i;
+	int count = 0;
 
+	i = n;
 	if (n < 0)
 	{
 		_putchar('-');
-		ret++;
-		n = -n;
+		count++;
+		i = -i;
 	}
 
-	if (n == 0)
+	if (i < 10)
 	{
-		_putchar('0');
-		ret++;
+		count += _putchar(i + '0');
+		return (count);
 	}
 
-	for (i = 0; n > 0; i++)
+	if (i > 9)
 	{
-		count[i] = n % base;
-		n = n / base;
+		count += print_int_helper(i / 10) + 1;
+		_putchar((i % 10) + '0');
+		return (count);
 	}
 
-	for (i = i - 1; i >= 0; i--)
-	{
-		_putchar(count[i] + '0');
-		ret++;
-	}
-	return (ret);
+	return (0);
 }
 
 /**
@@ -51,6 +49,6 @@ int print_int(va_list ap)
 	int n = va_arg(ap, int);
 	int count = 0;
 
-	count = print_int_helper(n, 10, &count);
+	count = print_int_helper(n);
 	return (count);
 }

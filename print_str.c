@@ -42,12 +42,8 @@ int print_string(va_list ap)
  *
  * Return: The number of characters printed
  */
-int print_percent(va_list ap)
+int print_percent(va_list ap __attribute__((unused)))
 {
-	char p = va_arg(ap, int);
-
-	if (p == '%')
-		_putchar('%');
-
+	_putchar('%');
 	return (1);
 }
