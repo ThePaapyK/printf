@@ -23,8 +23,11 @@ typedef struct func_s
 /* _putchar function */
 int _putchar(char c);
 
+
+
 /* rev_string function */
 void rev_string(char *s);
+
 
 /* Function that produces output according to a format */
 int _printf(const char *format, ...);
