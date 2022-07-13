@@ -1,4 +1,9 @@
 #include "main.h"
+/**
+ * print_binary - prints binary number
+ * @ap: argument passed from va_list
+ * Return: rev_string(c)
+ */
 
 int print_binary(va_list ap)
 {
@@ -17,5 +22,6 @@ int print_binary(va_list ap)
 		c++;
 	}
 	free(str);
-	return (rev_string(c));
+	/* return (rev_string(c));*/
+	return (0);
 }
