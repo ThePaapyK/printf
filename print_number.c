@@ -17,5 +17,5 @@ int print_binary(va_list ap)
 		c++;
 	}
 	free(str);
-	return (c);
+	return (rev_string(c));
 }
