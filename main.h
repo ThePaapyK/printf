@@ -23,8 +23,6 @@ typedef struct func_s
 /* _putchar function */
 int _putchar(char c);
 
-
-
 /* Function that produces output according to a format */
 int _printf(const char *format, ...);
 
@@ -38,8 +36,8 @@ int print_int_helper(int n);
 int print_int(va_list ap);
 
 /* conversion functions */
-int convert_alpha_num(int n, int upper);
-char *convert_base(unsigned long n, unsigned int base, int upper);
+int convert_alpha(int num, int c);
+char *convert_base(unsigned long num, unsigned int base);
 
 /* print_number functions */
 int print_binary(va_list ap);

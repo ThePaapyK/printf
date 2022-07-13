@@ -1,52 +1,75 @@
 #include "main.h"
 
 /**
- * convert_alpha_num - function that converts a number to a string
- * @n: the number to convert
- * @upper: upper case or not
+ * convert_alpha - function that converts a number to a string
+ * @num: the number to convert
+ * @c: check if char is lowercase or uppercase
  *
  * Return: the string
  */
-int convert_alpha_num(int n, int upper)
+int convert_alpha(int num, int c)
 {
-	if (n > 9)
-		return (n - 10 + (upper ? 'A' : 'a'));
+	if (num > 9)
+	{
+		convert_alpha(num / 10, c);
+	}
+	if (c == 1)
+	{
+		_putchar(num % 10 + 'a');
+	}
 	else
-		return (n + '0');
+	{
+		_putchar(num % 10 + 'A');
+	}
+	return (0);
 }
 
 /**
- * convert_base - converts unsigned base 10 to given base
- * @n: the number to convert
+ * convert_base - function that converts a number to a base
+ * @num: the number to convert
  * @base: the base to convert to
- * @upper: upper case or not
  *
  * Return: the string
  */
-char *convert_base(unsigned long n, unsigned int base, int upper)
+char *convert_base(unsigned long num, unsigned int base)
 {
-	int i = 0;
+	int c = 0;
+	unsigned int n = num;
 	char *str;
 
-	while (n >= base)
+	while (n > base)
 	{
 		n = n / base;
-		i++;
+		c++;
 	}
 
-	str = malloc(sizeof(char) * (i + 1));
-
+	str = malloc(sizeof(char) * (c + 2));
 	if (str == NULL)
-		return (NULL);
-
-	str[i + 1] = '\0';
-
-	while (i >= 0)
 	{
-		str[i] = convert_alpha_num(n % base, upper);
-		n = n / base;
-		i--;
+		return (NULL);
 	}
+	str[c] = '\0';
 
+	while (c >= 0)
+	{
+		if (num > base)
+		{
+			str[c] = num % base;
+			num = num / base;
+		}
+		else
+		{
+			str[c] = num % base;
+		}
+		if (str[c] > 9)
+		{
+			convert_alpha(str[c], 1);
+		}
+		else
+		{
+			_putchar(str[c] + '0');
+		}
+		c--;
+	}
 	return (str);
 }

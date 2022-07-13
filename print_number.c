@@ -1,30 +1,21 @@
 #include "main.h"
 
-/**
- * print_binary - Prints the binary representation of a number
- * @ap: The argument pointer
- *
- * Return: The number of characters printed
- */
 int print_binary(va_list ap)
 {
-	unsigned int n = va_arg(ap, unsigned int);
-	int i;
+	int num = va_arg(ap, int);
+	int i, c = 0;
 	char *str;
 
-	str = malloc(sizeof(char) * 33);
+	str = convert_base(num, 2);
 	if (str == NULL)
-		return (-1);
-
-	str[32] = '\0';
-
-	for (i = 31; i >= 0; i--)
 	{
-		str[i] = (n & 1) + '0';
-		n = n >> 1;
+		return (-1);
 	}
-
-	_puts(str);
+	for (i = 0; str[i] != '\0'; i++)
+	{
+		_putchar(str[i]);
+		c++;
+	}
 	free(str);
-	return (32);
+	return (c);
 }
