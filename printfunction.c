@@ -101,5 +101,4 @@ void printinteger(va_list ap)
 	n = va_arg(ap, int);
 	printint(n);
 
-
 }
