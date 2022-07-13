@@ -38,10 +38,10 @@ int print_int_helper(int n);
 int print_int(va_list ap);
 
 /* conversion functions */
-int convert_alpha_num(int n, int upper);
-char *convert_base(unsigned long n, unsigned int base, int upper);
+/*int convert_alpha_num(int n, int upper); */
+/*char *convert_base(unsigned long n, unsigned int base, int upper); */
 
 /* print_number functions */
-int print_binary(va_list ap);
+/* int print_binary(va_list ap); */
 
 #endif /* MAIN_H */
