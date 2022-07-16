@@ -32,6 +32,9 @@ void rev_string(char *s);
 /* Function that produces output according to a format */
 int _printf(const char *format, ...);
 
+/* get_fun function */
+int (*get_func(char c))(va_list);
+
 /* print_str functions */
 int print_char(va_list ap);
 int print_string(va_list ap);
