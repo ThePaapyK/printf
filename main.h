@@ -17,37 +17,30 @@
 typedef struct func_s
 {
 	char *op;
-	int (*f)(va_list);
+	int (*func)(va_list);
 } func_t;
 
 /* _putchar function */
 int _putchar(char c);
 
-
-
 /* rev_string function */
 void rev_string(char *s);
-
 
 /* Function that produces output according to a format */
 int _printf(const char *format, ...);
 
-/* get_fun function */
+/* get_func function */
 int (*get_func(char c))(va_list);
 
 /* print_str functions */
-int print_char(va_list ap);
-int print_string(va_list ap);
-int print_percent(va_list ap);
+int print_char(va_list arg);
+int print_string(va_list arg);
 
-/* print_int functions */
-int print_int_helper(int n);
-int print_int(va_list ap);
+/* print_percent function */
+int print_percent(va_list arg __attribute__((unused)));
 
-/* print_binary functions */
-int print_binary(va_list ap);
+ /* print_int functions */
+ int print_int(va_list arg);
+ int print_decimal(va_list arg);
 
-/* print_unsigned functions */
-int print_unsigned_int(va_list ap);
-
-#endif /* MAIN_H */
+#endif

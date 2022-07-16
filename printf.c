@@ -1,36 +1,41 @@
 #include "main.h"
 
+/**
+ * _printf - prints the string to stdout
+ * @format: the string to print
+ *
+ * Return: the number of characters printed
+ */
 int _printf(const char *format, ...)
 {
-	int count = -1;
+	int count = 0;
+	int index = 0;
 
 	if (format != NULL)
 	{
-		int index = 0;
 		va_list args;
 		int (*func)(va_list);
 
 		va_start(args, format);
-		if (format[0] == '%' && format[1] == '\0')
-			return (-1);
 
-		count = 0;
 		while (format[index] != '\0')
 		{
 			if (format[index] == '%')
 			{
-				count += _putchar(format[index]);
 				index++;
+				func = get_func(format[index]);
+
+				if (func != NULL)
+					count += func(args);
+
+				else
+					count += _putchar('%');
 			}
 
-			else if (format[index + 1] != '\0')
-			{
-				func = get_func(format[index + 1]);
-				count += (func ? func(args) : _putchar(format[index]) + _putchar(format[index + 1]));
-				index ++;
-			}
 			else
 				count += _putchar(format[index]);
+
+			index++;
 		}
 		va_end(args);
 	}

@@ -14,10 +14,10 @@ int (*get_func(char c))(va_list)
 	func_t ops[] = {
 		{"c", print_char},
 		{"s", print_string},
-		{"d", print_int},
-		{"i", print_int},
 		{"%", print_percent},
-		{"b", print_binary}
+		{"i", print_int},
+		{"d", print_decimal},
+		{NULL, NULL}
 	};
 
 	i = 0;
@@ -25,7 +25,7 @@ int (*get_func(char c))(va_list)
 	{
 		if (c == *(ops[i].op))
 		{
-			return (ops[i].f);
+			return (ops[i].func);
 		}
 	}
 	return (0);

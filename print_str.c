@@ -1,49 +1,38 @@
 #include "main.h"
-
 /**
  * print_char - Prints a character to stdout
- * @ap: The argument pointer
+ * @arg: The argument to print
  *
  * Return: The number of characters printed
  */
-int print_char(va_list ap)
+int print_char(va_list arg)
 {
-	char c = va_arg(ap, int);
-
-	_putchar(c);
-	return (1);
+	return (_putchar(va_arg(arg, int)));
 }
 
 /**
- * print_string - Prints a string to stdout
- * @ap: The argument pointer
+ * print_string - prints the string to stdout
+ * @arg: the string to print
  *
- * Return: The number of characters printed
+ * Return: the number of characters printed
  */
-int print_string(va_list ap)
+int print_string(va_list arg)
 {
-	char *s = va_arg(ap, char *);
-	int i, ret = 0;
+	char *str = va_arg(arg, char *);
+	int index = 0;
+	int count = 0;
 
-	if (s == NULL)
-		s = "(null)";
-
-	for (i = 0; s[i] != '\0'; i++)
+	if (str != NULL)
 	{
-		_putchar(s[i]);
-		ret++;
+		while (str[index] != '\0')
+		{
+			count += _putchar(str[index]);
+			index++;
+		}
 	}
-	return (ret);
-}
 
-/**
- * print_percent - Prints a percent to stdout
- * @ap: The argument pointer
- *
- * Return: The number of characters printed
- */
-int print_percent(va_list ap __attribute__((unused)))
-{
-	_putchar('%');
-	return (1);
+	else
+		str = "(null)";
+
+	return (count);
 }

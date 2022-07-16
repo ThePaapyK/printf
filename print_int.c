@@ -1,51 +1,51 @@
 #include "main.h"
-
 /**
- * print_int_helper - helper function for print_int
- * @n: the number to print
- *
+ * print_int - print an integer
+ * @arg: the argument
  * Return: the number of characters printed
  */
-int print_int_helper(int n)
+int print_int(va_list arg)
 {
-	unsigned int i;
-	int count = 0;
+	int num;
+	unsigned int count, abs_num, aux, i;
 
-	i = n;
-	if (n < 0)
+	num = va_arg(arg, int);
+	count = 0;
+
+	if (num < 0)
 	{
 		_putchar('-');
+		abs_num = num * -1;
 		count++;
-		i = -i;
 	}
+	else
+		abs_num = num;
 
-	if (i < 10)
+	aux = abs_num;
+	i = 1;
+
+	while (aux > 9)
 	{
-		count += _putchar(i + '0');
-		return (count);
+		aux /= 10;
+		i *= 10;
 	}
 
-	if (i > 9)
+	while (i > 0)
 	{
-		count += print_int_helper(i / 10) + 1;
-		_putchar((i % 10) + '0');
-		return (count);
+		_putchar((abs_num / i) % 10 + '0');
+		i /= 10;
+		count++;
 	}
-
-	return (0);
+	return (count);
 }
 
 /**
- * print_int - Prints an integer to stdout
- * @ap: The argument pointer
+ * print_decimal - prints a decimal number
+ * @arg: the argument
  *
- * Return: The number of characters printed
+ * Return: the number of characters printed
  */
-int print_int(va_list ap)
+int print_decimal(va_list arg)
 {
-	int n = va_arg(ap, int);
-	int count = 0;
-
-	count = print_int_helper(n);
-	return (count);
+	return (print_int(arg));
 }
