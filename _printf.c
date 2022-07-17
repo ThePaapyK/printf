@@ -24,8 +24,7 @@ int op_checker(char c, va_list ap)
 	{
 		if (c == *(ops[i].op))
 		{
-			ops[i].f(ap);
-			return (1);
+			return (ops[i].f(ap));
 		}
 	}
 	return (-1);
